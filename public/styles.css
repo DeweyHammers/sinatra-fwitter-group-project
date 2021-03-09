@@ -1,0 +1,12 @@
+body {
+  background-color: #CCCCCC;
+}
+
+.cover-container {
+  max-width: 42em;
+  margin-top: 10%;
+}
+
+#fwitter-nav{
+  margin-left: 15%;
+}
