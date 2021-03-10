@@ -21,6 +21,7 @@ class TweetsController < ApplicationController
     @user = Helpers.current_user(session)
     if params['content'] != ''
       @user.tweets << Tweet.create(params)
+      redirect "/tweets"
     else
       redirect '/tweets/new' 
     end
@@ -38,6 +39,16 @@ class TweetsController < ApplicationController
   get '/tweets/:id/edit' do
     @tweet = Tweet.find(params[:id])
     erb :'tweets/edit'
+  end
+
+  patch '/tweets/:id' do 
+    @tweet = Tweet.find(params[:id])
+    if params['content'] != ''
+      @tweet.update(content: params['content'])
+      redirect "/tweets/#{@tweet.id}"
+    else
+      redirect "/tweets/#{@tweet.id}/edit"
+    end
   end
 
   delete '/tweets/:id/delete' do
