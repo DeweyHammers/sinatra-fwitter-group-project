@@ -12,17 +12,17 @@ class UsersController < ApplicationController
   post '/signup' do
     user = User.find_by(username: params['username'], email: params['email'])
     if user
-      flash[:notice] = "That account has already been made!"
+      flash[:message] = "That account has already been made!"
       redirect '/signup'
     else
       user = User.new(params)
       if params['username'] != '' && params['email'] != '' && params['password'] != ''
         user.save
         session['user_id'] = user.id
-        flash[:notice] = "Account made, Welcome!"
+        flash[:message] = "Account made, Welcome!"
         redirect '/tweets'
       else
-        flash[:notice] = "There was a error! Please try again."
+        flash[:message] = "There was a error! Please try again."
         redirect '/signup'
       end 
     end
@@ -34,6 +34,18 @@ class UsersController < ApplicationController
     else
       Helpers.set_webpage('login')
       erb :'users/login'
+    end
+  end
+
+  post '/login' do
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      flash[:message] = "Welcome Back!"
+      redirect "/tweets"
+    else
+      flash[:message] = "That was the wrong info!"
+      redirect "/login"
     end
   end
 
