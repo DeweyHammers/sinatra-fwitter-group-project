@@ -1,0 +1,36 @@
+<% if flash.has?(:notice) %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h3 class='text-center'><%= flash[:notice] %></h3>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %> 
+
+<form method='POST' action='/signup' class='needs-validation' novalidate>
+  <div class='text-center cover-container d-flex w-100 h-100 p-3 mx-auto flex-column'>
+    <h1>Sign Up today!</h1><br>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="username" id="floatingInput" placeholder="someone" required> 
+      <label for="floatingInput">Username</label>
+      <div class="invalid-feedback">
+        Please provide a username!
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
+      <label for="floatingInput">Email address</label>
+      <div class="invalid-feedback">
+        Please provide a valid Email!
+      </div>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+      <div class="invalid-feedback">
+        Please provide a Password!
+      </div>
+    </div><br>
+    <div class="form-floating">
+      <input class="btn btn-outline-secondary btn-lg" type='submit' value='Sign Up'>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<% if flash.has?(:notice) %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <h3 class='text-center'><%= flash[:notice] %></h3>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %> 

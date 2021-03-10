@@ -1,4 +1,6 @@
 require './config/environment'
+require 'sinatra/base'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,9 +9,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "password_security"
+    use Rack::Flash, :sweep => true
   end
 
   get '/' do
+    Helpers.set_webpage('app_index')
     erb :index 
   end
 end
