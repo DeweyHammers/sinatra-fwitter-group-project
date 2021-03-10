@@ -44,8 +44,12 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/users/:slug' do
+    erb :'user/show' 
+  end
+
   get '/logout' do
     session.clear
-    redirect '/' 
+    redirect '/login' 
   end
 end
