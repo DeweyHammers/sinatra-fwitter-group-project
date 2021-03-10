@@ -1,11 +1,4 @@
-<% if flash.has?(:message) %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <h3 class='text-center'><%= flash[:message] %></h3>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<% end %> 
-
-<form method='POST' action='/signup' class='needs-validation' novalidate>
+<form method='POST' action='/login' class='needs-validation' novalidate>
   <div class='text-center cover-container d-flex w-100 h-100 p-3 mx-auto flex-column'>
     <h1>Please Login</h1><br>
     <div class="form-floating mb-3">
