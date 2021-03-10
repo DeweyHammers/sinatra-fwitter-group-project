@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   
   get '/signup' do
-    Helpers.set_webpage('user_signup')
-    erb :'users/new' 
+    if Helpers.logged_in?(session)
+      redirect '/tweets'
+    else 
+      Helpers.set_webpage('signup')
+      erb :'users/new'
+    end 
   end
 
   post '/signup' do
@@ -22,5 +26,19 @@ class UsersController < ApplicationController
         redirect '/signup'
       end 
     end
+  end
+
+  get '/login' do
+    if Helpers.logged_in?(session)
+      redirect '/tweets'
+    else
+      Helpers.set_webpage('login')
+      erb :'users/login'
+    end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/' 
   end
 end

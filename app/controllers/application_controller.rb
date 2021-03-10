@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    Helpers.set_webpage('app_index')
+    Helpers.set_webpage('index')
     erb :index 
   end
 end
